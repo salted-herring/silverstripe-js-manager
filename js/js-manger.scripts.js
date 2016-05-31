@@ -51,7 +51,7 @@
 			style	=	{
 							'position': 'absolute',
 							'right': 0,
-							'top': 0
+							'top': '2px'
 						},
 			n		=	numImported(),
 			btnLib	=	$('<button />').append('Bower Components').css('margin-right', '1em').addClass(_activeClass, 'js-manager-button'),
@@ -84,7 +84,27 @@
         });
 	}
 	
+	function sticky() {
+		var n	=	$('.cms-content-fields').scrollTop(),
+			i	=	$('#Root_Javascripts').offset().left,
+			h	= 	$('.cms-content-header').outerHeight();
+		$('.cms-content-fields').scroll(function(e) {
+			n	=	$('.cms-content-fields').scrollTop();
+			if (n > 0) {
+				$('#Root_Javascripts').addClass('top-fixed');
+				$('#Form_EditForm_BowerDirectory_Holder').width($('#Root_Javascripts').width()).css({'top': h}, {'left': i});
+			}else{
+				$('#Root_Javascripts').removeClass('top-fixed');
+				$('#Form_EditForm_BowerDirectory_Holder').removeAttr('style');
+			}
+		});
+	}
+	
 	$.entwine('ss', function($) {
+		
+		$('#Form_EditForm_BowerDirectory_Holder').entwine({
+			onmatch: sticky
+		});
 		
 		$('#imported-components').entwine({
 			onmatch: loadSaved
@@ -92,6 +112,7 @@
 		
 		$('#Form_EditForm_BowerDirectory').entwine({
 			onmatch: function(e) {
+				
 				makeButtons($('.bower-components').length == 0);
 				$(this).attr('data-origin', $(this).val()).change(function(e) {
 					if ($(this).val() !== $(this).attr('data-origin')) {

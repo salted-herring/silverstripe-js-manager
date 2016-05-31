@@ -23,3 +23,18 @@
 #imported-components li:last-child {
 	border-bottom: none;
 }
+
+#Root_Javascripts {
+	position: relative;
+}
+
+#Root_Javascripts.top-fixed {
+	padding-top: 60px;
+}
+
+.top-fixed #Form_EditForm_BowerDirectory_Holder {
+	position: fixed;
+	margin: 0;
+	padding: 20px 0 7px 0;
+	background-color: #f6f7f8;
+}
