@@ -1,0 +1,25 @@
+#imported-components,
+#Form_EditForm_JSLibrary_Holder { 
+	display: none; 
+}
+
+#imported-components {
+	background-color: #fff;
+	width: 100%;
+	min-height: 200px;
+	max-height: 600px;
+	overflow: hidden;
+	overflow-y: auto;
+	border: 1px solid #ccc;
+}
+
+#imported-components li {
+	padding: 1em;
+	font-size: 20px;
+	border-bottom: 1px solid #ccc;
+	background-color: #fff;
+}
+
+#imported-components li:last-child {
+	border-bottom: none;
+}
