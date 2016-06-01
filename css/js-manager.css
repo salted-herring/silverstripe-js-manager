@@ -1,38 +1,58 @@
+#Form_ItemEditForm_Javascripts_Holder,
+#Form_ItemEditForm_JSBase_Holder,
 #imported-components,
-#Form_EditForm_JSLibrary_Holder { 
+#Form_ItemEditForm_JSLibrary_Holder { 
 	display: none; 
 }
 
-#imported-components {
+.custom-js-orderer {
 	background-color: #fff;
 	width: 100%;
 	min-height: 200px;
 	max-height: 600px;
 	overflow: hidden;
 	overflow-y: auto;
-	border: 1px solid #ccc;
 }
 
-#imported-components li {
+.custom-js-orderer li {
 	padding: 1em;
 	font-size: 20px;
-	border-bottom: 1px solid #ccc;
+	border: 1px solid #ccc;
 	background-color: #fff;
+	position: relative;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
 }
 
-#imported-components li:last-child {
-	border-bottom: none;
+.custom-js-orderer li .btn-remove-this-js {
+	display: block;
+	background-color: #FF484B;
+	color: #fff;
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	line-height: 56px;
+	padding: 0 1em;
+	cursor: pointer;
 }
 
-#Root_Javascripts {
+.custom-js-orderer li .btn-remove-this-js:hover {
+	background-color: #FD2B2E;
+}
+
+
+#Form_ItemEditForm {
 	position: relative;
 }
 
-#Root_Javascripts.top-fixed {
+.cms-content-fields {
 	padding-top: 60px;
 }
 
-.top-fixed #Form_EditForm_BowerDirectory_Holder {
+#Form_ItemEditForm_Sitewide_Holder,
+#Form_ItemEditForm_BowerDirectory_Holder {
 	position: fixed;
 	margin: 0;
 	padding: 20px 0 7px 0;
