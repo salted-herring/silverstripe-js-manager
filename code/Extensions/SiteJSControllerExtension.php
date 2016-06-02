@@ -1,4 +1,5 @@
 <?php
+use SaltedHerring\Debugger as Debugger;
 class SiteJSControllerExtension extends Extension {
 	public function __construct() {
 		$config = Versioned::get_by_stage('SiteJsConfig','Live')->filter(array(
@@ -20,9 +21,10 @@ class SiteJSControllerExtension extends Extension {
 				}
 			}
 		}
-	
+		//SaltedHerring\Debugger::inspect('construct ext',false);
 		parent::__construct();
 	}
+	
 	
 	private function getJSList($components) {
 		$lst = array();

@@ -11,3 +11,6 @@ Controller:
 SiteJsConfig:
   extensions:
     - Versioned("Stage","Live")
+SiteTree:
+  extensions:
+    - SiteJSPageDecorator
