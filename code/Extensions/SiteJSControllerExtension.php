@@ -2,26 +2,28 @@
 use SaltedHerring\Debugger as Debugger;
 class SiteJSControllerExtension extends Extension {
 	public function __construct() {
-		$config = Versioned::get_by_stage('SiteJsConfig','Live')->filter(array(
-			'isDefault'		=>	true
-		));
-		if ($config->count() > 0) {
-			
-			$components = $config->first()->Config;
-			if (!empty($components)) {
-				$components = json_decode($components);
+		$controller = Controller::curr();
+		if ($controller->request->getVar('url') != '/admin/pages/edit/EditForm') {
+			$config = Versioned::get_by_stage('SiteJsConfig','Live')->filter(array(
+				'isDefault'		=>	true
+			));
+			if ($config->count() > 0) {
+				
+				$components = $config->first()->Config;
 				if (!empty($components)) {
-					$components = $this->getJSList($components);
-					if (count($components) > 0) {
-						Requirements::combine_files(
-							'scripts.js',
-							$components
-						);
+					$components = json_decode($components);
+					if (!empty($components)) {
+						$components = $this->getJSList($components);
+						if (count($components) > 0) {
+							Requirements::combine_files(
+								'scripts.js',
+								$components
+							);
+						}
 					}
 				}
 			}
 		}
-		//SaltedHerring\Debugger::inspect('construct ext',false);
 		parent::__construct();
 	}
 	

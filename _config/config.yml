@@ -5,12 +5,12 @@ After: 'framework/*','cms/*', 'siteconfig/*'
 #SiteConfig:
 #  extensions:
 #    - SiteJSExtension
-Controller:
-  extensions:
-    - SiteJSControllerExtension
 SiteJsConfig:
   extensions:
     - Versioned("Stage","Live")
-SiteTree:
-  extensions:
-    - SiteJSPageDecorator
+#Controller:
+#  extensions:
+#    - SiteJSControllerExtension
+#SiteTree:
+#  extensions:
+#    - SiteJSPageDecorator
