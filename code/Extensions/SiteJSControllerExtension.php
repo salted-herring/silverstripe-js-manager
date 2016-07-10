@@ -1,9 +1,11 @@
 <?php
 use SaltedHerring\Debugger as Debugger;
+use SaltedHerring\Utilities as Utilities;
 class SiteJSControllerExtension extends Extension {
 	public function __construct() {
 		$controller = Controller::curr();
-		if ($controller->request->getVar('url') != '/admin/pages/edit/EditForm') {
+		
+		if ( !Utilities::startsWith($controller->request->getVar('url'), '/admin') ) {
 			$config = Versioned::get_by_stage('SiteJsConfig','Live')->filter(array(
 				'isDefault'		=>	true
 			));
