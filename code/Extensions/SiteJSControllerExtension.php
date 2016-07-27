@@ -3,8 +3,12 @@ use SaltedHerring\Debugger as Debugger;
 use SaltedHerring\Utilities as Utilities;
 class SiteJSControllerExtension extends Extension {
 	public function __construct() {
+		$this->initJS();
+		parent::__construct();
+	}
+	
+	public function initJS() {
 		$controller = Controller::curr();
-		
 		if ( !Utilities::startsWith($controller->request->getVar('url'), '/admin') ) {
 			$config = Versioned::get_by_stage('SiteJsConfig','Live')->filter(array(
 				'isDefault'		=>	true
@@ -26,7 +30,6 @@ class SiteJSControllerExtension extends Extension {
 				}
 			}
 		}
-		parent::__construct();
 	}
 	
 	
